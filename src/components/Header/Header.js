@@ -16,7 +16,7 @@ export default function Header() {
   return (
     <header>
       <h1>what todo, what todo...?</h1>
-      {user && <button onClick={handleLogout}>Logout</button> }
+      {user && <button className='logout-btn' onClick={handleLogout}>Logout</button> }
       
     </header>
   );

@@ -26,8 +26,8 @@ export default function Auth() {
   return (
     <main>
       <div className='switch'>
-        <NavLink to='/auth/sign-in'>Sign in</NavLink>
-        <NavLink to='/auth/sign-up'>Sign up</NavLink>
+        <NavLink style={{ textDecoration: 'none' }} className='sign-in-toggle' to='/auth/sign-in'>Sign in</NavLink>
+        <NavLink style={{ textDecoration: 'none' }} className='sign-in-toggle' to='/auth/sign-up'>Sign up</NavLink>
       </div>
       <div className='form'>
         <label>Email</label>
