@@ -1,7 +1,16 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { UserContext } from '../../context/UserContext';
 import './Todos.css';
+import { Redirect } from 'react-router-dom';
 
 export default function Todos() {
+
+  const { user } = useContext(UserContext);
+
+  if (!user) {
+    return <Redirect to='/auth/sign-in'/>;
+  }
+
   return (
     <div className='todo-main'>
       <div className='input-container'>

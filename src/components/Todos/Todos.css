@@ -19,6 +19,6 @@
   background-color: rgb(139, 188, 204);
 }
 
-ul {
-  text-decoration: none;
+li {
+  list-style: none;
 }

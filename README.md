@@ -1,9 +1,9 @@
 ## Files/Compnonents
 
   # Compnonents
-  - Header 
-  - Auth
-  - Todos
+  - Header (component created)
+  - Auth (component created)
+  - Todos (component created)
 
   ## Services
   - client
@@ -42,10 +42,11 @@
   - name, setName
 
   # UserContext
-  - user, setUser
+  - user, setUser (done)
 
   # useTodo
   - todo, setTodo
+
 
 ## Header
 - get user and setUser from useContext(UserContext);
