@@ -1,0 +1,20 @@
+main {
+  height: 95vh;
+  background-color: rgb(139, 188, 204);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 20vh;
+  border: 2px solid rgb(76, 103, 147);
+  padding: 5vh; 
+  height: 15vh;
+  gap: 2vh;
+  border-radius: 8px;
+}
