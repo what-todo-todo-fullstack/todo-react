@@ -1,4 +1,4 @@
-import { client } from './client';
+import { client, checkError } from './client';
 
 export async function createTodo(todoObj) {
   const response = await client.from('todos').insert(todoObj);
@@ -12,15 +12,15 @@ export async function getTodos() {
   return response.data;
 }
 
-export async function deleteTodo(id) {
-  return await client.from('todos').delete().match({ id: id, complete: true });
+export async function deleteTodo({ id }) {
+  return await client.from('todos').delete().eq('id', id);
   
 }
 
 export async function toggleComplete({ id, complete }) {
   const response = await client.from('todos').update({ complete: !complete }).match({ id }).single();
 
-  return response;
+  return checkError(response);
   
 } 
 
