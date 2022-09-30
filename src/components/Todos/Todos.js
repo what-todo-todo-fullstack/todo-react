@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
 import './Todos.css';
 import { Redirect } from 'react-router-dom';
-import { createTodo, getTodos, toggleComplete } from '../../services/todos';
+import { createTodo, getTodos } from '../../services/todos';
 import { useTodos } from '../../hooks/useTodos';
 
 export default function Todos() {

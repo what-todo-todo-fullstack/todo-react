@@ -7,6 +7,8 @@ import './Header.css';
 export default function Header() {
 
   const { user, setUser } = useContext(UserContext);
+
+
   
 
   const handleLogout = async () => {
@@ -17,7 +19,7 @@ export default function Header() {
   return (
     <header>
       <h1>what todo, what todo...?</h1>
-      <h2>Hello {user.email}</h2>
+      {user && <h2>Hello {user.email}</h2>}
       {user && <button className='logout-btn' onClick={handleLogout}>Logout</button> }
       
     </header>
