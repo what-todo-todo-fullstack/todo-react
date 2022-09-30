@@ -11,3 +11,17 @@ export async function getTodos() {
 
   return response.data;
 }
+
+export async function deleteTodo(id) {
+  return await client.from('todos').delete().match({ id: id, complete: true });
+  
+}
+
+export async function toggleComplete({ id, complete }) {
+  const response = await client.from('todos').update({ complete: !complete }).match({ id }).single();
+
+  return response;
+  
+} 
+
+

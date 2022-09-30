@@ -2,7 +2,7 @@ import React, { useContext, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
 import './Todos.css';
 import { Redirect } from 'react-router-dom';
-import { createTodo, getTodos } from '../../services/todos';
+import { createTodo, getTodos, toggleComplete } from '../../services/todos';
 import { useTodos } from '../../hooks/useTodos';
 
 export default function Todos() {
@@ -10,6 +10,7 @@ export default function Todos() {
   const [description, setDescription] = useState('');
   const { user } = useContext(UserContext);
   const { todos, setTodos } = useTodos();
+
 
   
 
@@ -25,6 +26,14 @@ export default function Todos() {
     setTodos(supTodo);
     setDescription('');
   };
+
+  // const completeTodo = async (todo) => {
+  //   const updatedTodo = await toggleComplete(todo);
+  //   setTodos(prevState => prevState.map((prevTodo) => prevTodo.id === todo.id ? updatedTodo : prevTodo));
+
+  // };
+
+
   
 
   if (!user) {
@@ -50,6 +59,9 @@ export default function Todos() {
           );
           
         })}
+      </div>
+      <div>
+        <button className='delete-btn'>Delete completed todos</button>
       </div>
     </div>
   );
