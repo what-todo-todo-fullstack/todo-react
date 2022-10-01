@@ -52,6 +52,7 @@ export default function Todos() {
     <div className='todo-main'>
       <div className='input-container'>
         <div className='todo-input'>
+          <h3>Got something todo?</h3>
           <form onSubmit={handleNewTodo}>
             <input value={description} type='text' onChange={(e) => setDescription(e.target.value)}></input>
             <button className='todo-btn'>Add Todo</button>
@@ -74,7 +75,7 @@ export default function Todos() {
               key={todo.id + 1}
               className='delete-btn' 
               onClick={() => handleDelete(todo)}>
-                Delete completed todos
+                delete
             </button>
           </div>;
           
