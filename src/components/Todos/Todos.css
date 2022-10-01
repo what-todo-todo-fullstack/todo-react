@@ -12,24 +12,31 @@
   align-items: center;
   font-family: 'Signika Negative', sans-serif;
   
+  
 }
 
 .todo-input {
   border: 2px solid rgb(56, 41, 51);
-  padding: 1.5vh;
+  padding: 2vh;
   border-radius: 8px;
+  font-size: 1.5vh;
+  color: rgb(164, 180, 148);
   background-color: rgb(59, 82, 73);
   box-shadow: 4px 4px 8px -2px rgba(56,41,51,0.75);
 -webkit-box-shadow: 4px 4px 8px -2px rgba(56,41,51,0.75);
 -moz-box-shadow: 4px 4px 8px -2px rgba(56,41,51,0.75);
+text-shadow: 2px 2px 2px rgba(0,0,0,0.75);
 }
+
+
+
 
 li {
   list-style: none;
 }
 
 .todo-btn {
-  margin: 1vh;
+  margin: .5vh;
   background-color: rgb(56, 41, 51);
   color:rgb(164, 180, 148);
   padding-left: 1vh;
