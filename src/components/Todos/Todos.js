@@ -9,17 +9,18 @@ export default function Todos() {
   const [description, setDescription] = useState('');
   const { user } = useContext(UserContext);
   const { todos, setTodos } = useTodos();
-  console.log(todos);
+
+  console.log(description);
   const handleNewTodo = async () => {
     const newTodo = {
-      description: description,
+      task: description,
       complete: false,
     };
 
     await createTodo(newTodo);
-    // const supTodo = await getTodos();
-    // setTodos(supTodo);
-    // setDescription('');
+
+    setTodos(todos);
+    setDescription('');
   };
 
   const handleComplete = async (todo) => {
@@ -58,7 +59,7 @@ export default function Todos() {
         {todos.map((todo) => {
           return (
             <div key={todo.id}>
-              <label>{todo.description}</label>
+              <label>{todo.task}</label>
               <input key={todo.id} type="checkbox" onClick={() => handleComplete(todo)}></input>
               <button key={todo.id + 1} className="delete-btn" onClick={() => handleDelete(todo)}>
                 delete

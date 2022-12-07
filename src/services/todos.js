@@ -8,19 +8,28 @@ export async function createTodo(task) {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
-    body: JSON.stringify({ task }),
+    body: JSON.stringify(task),
     credentials: 'include',
   });
+  console.log(resp);
   if (resp.ok) {
-    console.log(resp);
     return resp;
   }
 }
 
 export async function getTodos() {
-  const response = await client.from('todos').select('*');
-
-  return response.data;
+  const resp = await fetch(`${BASE_URL}/api/v1/todos`, {
+    method: 'GET',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+  });
+  if (resp.ok) {
+    const todos = await resp.json();
+    return todos;
+  }
 }
 
 export async function deleteTodo({ id }) {

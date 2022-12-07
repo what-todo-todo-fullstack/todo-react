@@ -7,7 +7,10 @@ export function useTodos() {
   useEffect(() => {
     const fetchTodos = async () => {
       const data = await getTodos();
-      // console.log(data);
+      for (let todo of data) {
+        console.log('dataaa', todo.task);
+      }
+
       setTodos(data);
     };
     fetchTodos();
