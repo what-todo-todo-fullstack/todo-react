@@ -1,15 +1,24 @@
-import { createContext, useState } from 'react';
+import { createContext, useEffect, useState } from 'react';
 import { getUser } from '../services/auth';
 
 const UserContext = createContext();
 
 const UserProvider = ({ children }) => {
-  const currentUser = getUser();
-  const [user, setUser] = useState(currentUser);
+  const [user, setUser] = useState('');
 
-  return <UserContext.Provider value={{ user, setUser }}>
-    {children}
-  </UserContext.Provider>;
+  const getCurrentUser = async () => {
+    const currentUser = await getUser({});
+    setUser(currentUser);
+    return currentUser;
+  };
+
+  useEffect(() => {
+    getCurrentUser();
+  }, []);
+
+  // const fetchedUser = getCurrentUser();
+
+  return <UserContext.Provider value={{ user, setUser }}>{children}</UserContext.Provider>;
 };
 
 export { UserProvider, UserContext };
