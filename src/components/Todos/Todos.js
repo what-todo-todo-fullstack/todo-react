@@ -10,7 +10,7 @@ export default function Todos() {
   const { user } = useContext(UserContext);
   const { todos, setTodos } = useTodos();
 
-  console.log(description);
+  console.log(todos);
   const handleNewTodo = async () => {
     const newTodo = {
       task: description,
@@ -24,14 +24,15 @@ export default function Todos() {
   };
 
   const handleComplete = async (todo) => {
-    const updatedTodo = await toggleComplete(todo);
+    const updatedTodo = await toggleComplete(todo.id, todo.complete);
+    console.log('updatedd', updatedTodo);
     setTodos((prevTodos) =>
       prevTodos.map((prevTodo) => (prevTodo.id === todo.id ? updatedTodo : prevTodo))
     );
   };
 
   const handleDelete = async (todo) => {
-    await deleteTodo(todo);
+    await deleteTodo(todo.id);
     const newTodos = todos.filter((oldTodo) => todo.id !== oldTodo.id);
     setTodos(newTodos);
   };

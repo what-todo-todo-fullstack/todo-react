@@ -1,4 +1,3 @@
-import { client, checkError } from './client';
 const BASE_URL = 'http://localhost:7890';
 
 export async function createTodo(task) {
@@ -11,7 +10,6 @@ export async function createTodo(task) {
     body: JSON.stringify(task),
     credentials: 'include',
   });
-  console.log(resp);
   if (resp.ok) {
     return resp;
   }
@@ -25,6 +23,7 @@ export async function getTodos() {
       'Content-Type': 'application/json',
     },
     credentials: 'include',
+    // body: JSON.stringify(id),
   });
   if (resp.ok) {
     const todos = await resp.json();
@@ -32,16 +31,35 @@ export async function getTodos() {
   }
 }
 
-export async function deleteTodo({ id }) {
-  return await client.from('todos').delete().eq('id', id);
+export async function toggleComplete(id, complete) {
+  const resp = await fetch(`${BASE_URL}/api/v1/todos/${id}`, {
+    method: 'PUT',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    mode: 'cors',
+    body: JSON.stringify(!complete),
+  });
+  if (resp.ok) {
+    const updatedTodo = await resp.json();
+    console.log('asdfasdf', updatedTodo);
+    return updatedTodo;
+  }
 }
 
-export async function toggleComplete({ id, complete }) {
-  const response = await client
-    .from('todos')
-    .update({ complete: !complete })
-    .match({ id })
-    .single();
-
-  return checkError(response);
+export async function deleteTodo(id) {
+  const resp = await fetch(`${BASE_URL}/api/v1/todos/${id}`, {
+    method: 'DELETE',
+    headers: {
+      Accept: 'application/json',
+      'Content-Type': 'application/json',
+    },
+    credentials: 'include',
+    mode: 'cors',
+  });
+  if (resp.ok) {
+    return resp;
+  }
 }
