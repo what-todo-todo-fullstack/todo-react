@@ -12,11 +12,11 @@ export function useTodos() {
       // for (let todo of data) {
       //   console.log('dataaa', todo.task);
       // }
-
+      console.log(data);
       setTodos(data);
     };
     fetchTodos();
-  }, []);
+  }, [user.id]);
 
   return { todos, setTodos };
 }

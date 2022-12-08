@@ -31,16 +31,16 @@ export async function getTodos() {
   }
 }
 
-export async function toggleComplete(id, complete) {
-  const resp = await fetch(`${BASE_URL}/api/v1/todos/${id}`, {
+export async function toggleComplete({ ...todo }) {
+  const resp = await fetch(`${BASE_URL}/api/v1/todos/${todo.id}`, {
     method: 'PUT',
     headers: {
       Accept: 'application/json',
       'Content-Type': 'application/json',
     },
     credentials: 'include',
-    mode: 'cors',
-    body: JSON.stringify(!complete),
+    // mode: 'cors',
+    body: JSON.stringify({ complete: !todo.complete }),
   });
   if (resp.ok) {
     const updatedTodo = await resp.json();

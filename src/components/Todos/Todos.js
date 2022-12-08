@@ -24,7 +24,7 @@ export default function Todos() {
   };
 
   const handleComplete = async (todo) => {
-    const updatedTodo = await toggleComplete(todo.id, todo.complete);
+    const updatedTodo = await toggleComplete(todo);
     console.log('updatedd', updatedTodo);
     setTodos((prevTodos) =>
       prevTodos.map((prevTodo) => (prevTodo.id === todo.id ? updatedTodo : prevTodo))
@@ -61,7 +61,12 @@ export default function Todos() {
           return (
             <div key={todo.id}>
               <label>{todo.task}</label>
-              <input key={todo.id} type="checkbox" onClick={() => handleComplete(todo)}></input>
+              <input
+                key={todo.id}
+                checked={todo.complete}
+                type="checkbox"
+                onChange={() => handleComplete(todo)}
+              ></input>
               <button key={todo.id + 1} className="delete-btn" onClick={() => handleDelete(todo)}>
                 delete
               </button>
