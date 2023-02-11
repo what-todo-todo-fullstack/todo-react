@@ -1,18 +1,22 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
+import { UserContext } from '../context/UserContext';
 import { getTodos } from '../services/todos';
 
 export function useTodos() {
   const [todos, setTodos] = useState([]);
+  const { user } = useContext(UserContext);
 
   useEffect(() => {
     const fetchTodos = async () => {
-      const data = await getTodos();
-      
+      const data = await getTodos(user.id);
+      // for (let todo of data) {
+      //   console.log('dataaa', todo.task);
+      // }
+      console.log(data);
       setTodos(data);
     };
     fetchTodos();
-    
-  }, []);
+  }, [user.id]);
 
   return { todos, setTodos };
 }
